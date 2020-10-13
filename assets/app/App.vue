@@ -1,6 +1,10 @@
 <template>
   <main-layout>
-    <router-view/>
+    <router-view v-slot="slotProps">
+      <transition name="fade" mode="out-in">
+        <component :is="slotProps.Component"></component>
+      </transition>
+    </router-view>
   </main-layout>
 </template>
 <script>

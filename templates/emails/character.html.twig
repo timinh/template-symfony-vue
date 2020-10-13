@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<main class="container">
+  <h1>{{character.name}}</h1>
+  <img src="{{character.image}}" alt="{{character.name}}" />
+  <h3>{{character.species}}</h3>
+  <h4>Origine : {{character.origin.name}}</h4>
+  <h4>Position actuelle : {{character.location.name}}</h4>
+
+  <h4>Apparait dans les épisodes : </h4>
+  <ul>
+    {% for episode in character.episode %}
+      <a target="_blank" href="{{episode}}">{{episode}}</a>
+    {% endfor %}
+  </ul>
+</main>
+{% endblock %}

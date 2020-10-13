@@ -7,3 +7,16 @@ a.nav-link {
 a.router-link-active {
     font-weight: bold;
 }
+
+/* Transition : fade */
+.fade-enter-active,
+.fade-leave-active {
+  transition-duration: .3s;
+  transition-property: opacity;
+  transition-timing-function: ease;
+}
+
+.fade-enter-from,
+.fade-leave-active {
+  opacity: 0
+}
