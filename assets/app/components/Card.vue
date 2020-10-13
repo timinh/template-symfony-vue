@@ -6,7 +6,7 @@
       <p class="card-text">Espèce : {{character.species}}</p>
       <p class="card-text">Genre : {{character.gender}}</p>
       <p class="card-text">Origine : {{character.origin.name}}</p>
-      <button class="btn btn-primary" @click="clickButton">Recevoir par mail</button>
+      <button v-if="showButton" class="btn btn-primary" @click="clickButton">Recevoir par mail</button>
     </div>
   </div>
 </template>
@@ -17,6 +17,11 @@ export default {
     character: {
       type: Object,
       require: true
+    },
+    showButton: {
+      type: Boolean,
+      require: false,
+      default: true
     }
   },
   setup(props,{emit}){
