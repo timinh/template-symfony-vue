@@ -4,7 +4,7 @@
   <h3>Quelques personnages aléatoires ({{savedCharacters.length}} enregistrés)</h3>
   <p>(fichier dans le dossier 'assets/app/pages/Home')</p>
     <div class="row">
-    <card class="col-xs-12 col-sm-6 col-md-4 p-1" :character="character" v-for="(character, index) in characters" :key="index" @buttonClicked="saveAndSendCharacterMail"/>
+    <card class="col-xs-12 col-sm-6 col-md-4 p-1" :character="character" v-for="(character, index) in characters" :showButton="isActive(character)" :key="index" @buttonClicked="saveAndSendCharacterMail"/>
     </div>
   </section>
 </template>
@@ -38,10 +38,13 @@ export default {
         }
       })
     }
+    const isActive = (character) => {
+      return !savedCharacters.value.some( char => char.id == character.id)
+    }
     onMounted(() => {
       updateListe()
     })
-    return {characters, saveAndSendCharacterMail, savedCharacters}
+    return {characters, saveAndSendCharacterMail, savedCharacters, isActive}
   }
 }
 </script>
