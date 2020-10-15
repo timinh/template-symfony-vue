@@ -19,7 +19,7 @@ export default {
           link: '/private'
         },
         {
-          label: 'A propos',
+          label: 'Persos envoyés par mail',
           link: '/private/about'
         }
       ]
