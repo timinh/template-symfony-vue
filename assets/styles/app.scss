@@ -1,14 +1,13 @@
-@import 'bootstrap';
 @import './_bootstrap_variables.scss';
+@import "node_modules/bootstrap/scss/bootstrap";
 
-body {
-    background-color: white;
-}
-a.nav-link {
+
+.router-link-active {
     color: white;
 }
-a.router-link-active {
+.router-link-exact-active {
     font-weight: bold;
+    text-decoration: underline;
 }
 
 /* Transition : fade */
