@@ -2,15 +2,15 @@
 
 {% block body %}
 <main class="container">
-  <h1>{{character.name}}</h1>
-  <img src="{{character.image}}" alt="{{character.name}}" />
-  <h3>{{character.species}}</h3>
-  <h4>Origine : {{character.origin.name}}</h4>
-  <h4>Position actuelle : {{character.location.name}}</h4>
+  <h1>{{data.name}}</h1>
+  <img src="{{data.image}}" alt="{{data.name}}" />
+  <h3>{{data.species}}</h3>
+  <h4>Origine : {{data.origin.name}}</h4>
+  <h4>Position actuelle : {{data.location.name}}</h4>
 
   <h4>Apparait dans les épisodes : </h4>
   <ul>
-    {% for episode in character.episode %}
+    {% for episode in data.episode %}
       <a target="_blank" href="{{episode}}">{{episode}}</a>
     {% endfor %}
   </ul>

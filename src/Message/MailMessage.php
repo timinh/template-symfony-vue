@@ -1,24 +1,21 @@
 <?php
 namespace App\Message;
 
+use App\Service\MailService;
+
 class MailMessage
 {
-  private $from;
   private $to;
   private $subject;
-  private $character;
+  private $data;
+  private $type;
 
-  public function __construct(String $from, String $to, String $subject, Array $character)
+  public function __construct(String $to, String $subject, Array $data, int $type = MailService::TYPE_CHARACTER)
   {
-    $this->from = $from;
     $this->to = $to;
     $this->subject = $subject;
-    $this->character = $character;
-  }
-
-  public function getFrom()
-  {
-    return $this->from;
+    $this->data = $data;
+    $this->type = $type;
   }
   
   public function getTo()
@@ -31,8 +28,13 @@ class MailMessage
     return $this->subject;
   }
 
-  public function getCharacter()
+  public function getType()
   {
-    return $this->character;
+    return $this->type;
+  }
+
+  public function getData()
+  {
+    return $this->data;
   }
 }

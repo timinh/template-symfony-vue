@@ -2,31 +2,21 @@
 namespace App\MessageHandler;
 
 use App\Message\MailMessage;
-use Symfony\Bridge\Twig\Mime\TemplatedEmail;
-use Symfony\Component\Mailer\MailerInterface;
+use App\Service\MailService;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 
 class MailMessageHandler implements MessageHandlerInterface
 {
-  private $mailer;
+  private $mailService;
 
-  public function __construct(MailerInterface $mailer)
+  public function __construct(MailService $mailService)
   {
-      $this->mailer = $mailer;
+    $this->mailService = $mailService;
   }
   
   public function __invoke(MailMessage $message)
   {
-    $this->mailer->send(
-      (new TemplatedEmail())
-          ->from($message->getFrom())
-          ->to($message->getTo())
-          ->subject($message->getSubject())
-          ->htmlTemplate('emails/character.html.twig')
-          ->context([
-            'character' =>$message->getCharacter()
-          ])
-    );
+    $this->mailService->sendHtmlMail($message);
   }
 
   
