@@ -6,7 +6,7 @@ help: ## Affiche cette aide
 install-php: ##Installation des dépendances via composer
 	@composer install
 
-install-js: ##Installation des dépendances js (utile en prod)
+install-js: ##Installation des dépendances js (utile seulement en prod)
 	@npm install && npm run build
 
 install: install-php install-js ##Lance les commandes 'install-php' puis 'install-js'

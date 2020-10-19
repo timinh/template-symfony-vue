@@ -1,20 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PublicController!{% endblock %}
+{% block title %}Application Symfony 5 - Vue 3{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/html/src/Controller/PublicController.php'|file_link(0) }}">src/Controller/PublicController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/html/templates/public/index.html.twig'|file_link(0) }}">templates/public/index.html.twig</a></code></li>
-    </ul>
-</div>
+<main>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <img src="https://cdn.uca.fr/images/logos/UCA_logo_long_blanc.png" alt="UCA">
+    </nav>
+    <main class="container mt-4">
+        <section class="container">
+            <h1>Application de démo Symfony / Vue</h1>
+            <h3>Les commandes disponibles dans le Makefile</h3>
+            <ul>
+                <li>help : Affiche cette aide dans le terminal</li>
+                <li>install-php : Installation des dépendances via composer</li>
+                <li>install-js : Installation des dépendances js (utile seulement en prod)</li>
+                <li>install : Lance les commandes 'install-php' puis 'install-js'</li>
+                <li>consume : Démarre les services messenger</li>
+            </ul>
+        </section>
+        <section class="mt-2">
+            <div class="row justify-content-md-center">
+                <div class="col-2">
+                    <a href="/private" class="btn btn-primary">Accéder à la démo</a>
+                </div>
+            </div>
+        </section
+    </main>
+</main>
 {% endblock %}
