@@ -16,13 +16,15 @@ class ImageService
   private $imgPath;
   private $server;
   private $client;
+  private $streamUrl;
 
-  public function __construct(String $signKey, String $imgPath, String $cachePath, ParameterBagInterface $parameterBag)
+  public function __construct(String $signKey, String $imgPath, String $cachePath, ParameterBagInterface $parameterBag, String $streamUrl)
   {
       $this->signKey = $signKey;
       $this->cachePath = $cachePath;
       $this->imgPath = $imgPath;
       $this->client = HttpClient::create();
+      $this->streamUrl = $streamUrl;
       
       $this->server = ServerFactory::create([
         'source' =>new Filesystem(new Local($this->imgPath)),
@@ -40,23 +42,27 @@ class ImageService
     return $this->server->getImageResponse($path, $this->makeParamsArray($width, $height, $fit));
   }
 
-  public function getResizedStream(int $width = null, int $height = null, String $fit = null, string $url)
+  public function getResizedStream(int $width = null, int $height = null, String $fit = null, string $path)
   { 
-    $fullname = $this->createImgFromStream($url);
+    $fullname = $this->createImgFromStream($path);
     if($fullname)
     {
-      return $this->getResizedImage($width, $height, $fit, $fullname);
+      $filename = explode('/', $path);
+      $file = \array_pop($filename);
+      return $this->getResizedImage($width, $height, $fit, $file);
     }
+    return $this->server->getImageResponse('/', $this->makeParamsArray($width, $height, $fit));
   }
 
-  public function createImgFromStream(String $url)
+  public function createImgFromStream(String $path)
   {
     try{
+      $url = $this->streamUrl.$path;
       $res = $this->client->request('GET', $url);
       if($res->getStatusCode() == 200)
       {
         $content = $res->getContent();
-        $filename = explode('/', $url);
+        $filename = explode('/', $path);
         $fullname = $this->imgPath.'/'.array_pop($filename);
         $file = file_put_contents($fullname, $content);
         return $fullname;

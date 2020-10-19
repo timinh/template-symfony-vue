@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use \App\Service\ImageService;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
@@ -25,10 +26,10 @@ class ImageController extends AbstractController
     }
 
     /**
-     * @Route("/images/test", methods={"GET"})
+     * @Route("/images/stream/{width}/{height}/{path}", methods={"GET"})
      */
-    public function test()
+    public function imgStream(int $width, int $height, string $path)
     {
-        return $this->imageService->getResizedStream(200,200, 'fit', 'https://rickandmortyapi.com/api/character/avatar/3.jpeg');
+        return $this->imageService->getResizedStream(intval($width), intval($height), 'fit', '/character/avatar/'.$path);
     }
 }
