@@ -26,8 +26,8 @@ class ImageService
       $this->streamUrl = $streamUrl;
       
       $this->server = ServerFactory::create([
-        'source' =>new Filesystem(new Local($this->imgPath)),
-        'cache'  => $this->cachePath,
+        'source' => new Filesystem(new Local($this->imgPath)),
+        'cache'  => new Filesystem(new Local($this->cachePath)),
         'response' => new SymfonyResponseFactory(),
         'defaults' => [
             'fm'  => 'jpg',

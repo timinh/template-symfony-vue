@@ -20,7 +20,7 @@ class ImageController extends AbstractController
     /**
      * @Route("/images/{width}/{height}/{path}", methods={"GET"})
      */
-    public function show(int $width, int $height, string $path)
+    public function image(int $width, int $height, string $path)
     {
         return $this->imageService->getResizedImage(intval($width), intval($height), 'fit', $path);
     }
@@ -28,7 +28,7 @@ class ImageController extends AbstractController
     /**
      * @Route("/images/stream/{width}/{height}/{path}", methods={"GET"})
      */
-    public function imgStream(int $width, int $height, string $path)
+    public function imageStream(int $width, int $height, string $path)
     {
         return $this->imageService->getResizedStream(intval($width), intval($height), 'fit', '/character/avatar/'.$path);
     }
