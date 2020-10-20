@@ -1,8 +1,8 @@
 <template>
   <div class="card" style="width: 18rem;">
-    <img :src="character.image" class="card-img-top" alt="" />
+    <!-- <img :src="character.image" class="card-img-top" alt="" /> -->
     <!-- avec mise en case du stream sur le disque -->
-    <!-- <img :src="base_url+'/images/stream/340/340/'+character.id+'.jpeg'" class="card-img-top" alt="" /> -->
+    <img :src="base_url+'/images/stream/340/340/'+character.id+'.jpeg'" class="card-img-top" alt="" />
     <div class="card-body">
       <h5 class="card-title">{{character.name}}</h5>
       <p class="card-text">Espèce : {{character.species}}</p>

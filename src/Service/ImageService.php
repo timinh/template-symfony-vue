@@ -10,7 +10,7 @@ use League\Glide\Responses\SymfonyResponseFactory;
 
 class ImageService
 {
-  private $signKey;
+  private $signKey; //Pas encore implémenté
   private $cachePath;
   private $imgPath;
   private $server;
@@ -36,11 +36,17 @@ class ImageService
       ]);
   }
 
+  /**
+   * Méthode de redimmensionnement d'un fichier image
+   */
   public function getResizedImage(int $width = null, int $height = null, String $fit = null, string $path)
   {
     return $this->server->getImageResponse($path, $this->makeParamsArray($width, $height, $fit));
   }
 
+  /**
+   * Méthode de redimmensionnement d'une image streamée
+   */
   public function getResizedStream(int $width = null, int $height = null, String $fit = null, string $path)
   { 
     $fullname = $this->createImgFromStream($path);
@@ -53,16 +59,23 @@ class ImageService
     return $this->server->getImageResponse('/', $this->makeParamsArray($width, $height, $fit));
   }
 
+  /**
+   * Génération d'un fichier image à partir un stream
+   */
   public function createImgFromStream(String $path)
   {
+    $filename = explode('/', $path);
+    $fullname = $this->imgPath.'/'.array_pop($filename);
+    if(\file_exists($fullname))
+    {
+      return $fullname;
+    }
     try{
       $url = $this->streamUrl.$path;
       $res = $this->client->request('GET', $url);
       if($res->getStatusCode() == 200)
       {
         $content = $res->getContent();
-        $filename = explode('/', $path);
-        $fullname = $this->imgPath.'/'.array_pop($filename);
         $file = file_put_contents($fullname, $content);
         return $fullname;
       }
