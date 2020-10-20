@@ -7,7 +7,6 @@ use League\Flysystem\Filesystem;
 use League\Flysystem\Adapter\Local;
 use Symfony\Component\HttpClient\HttpClient;
 use League\Glide\Responses\SymfonyResponseFactory;
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 class ImageService
 {
@@ -18,7 +17,7 @@ class ImageService
   private $client;
   private $streamUrl;
 
-  public function __construct(String $signKey, String $imgPath, String $cachePath, ParameterBagInterface $parameterBag, String $streamUrl)
+  public function __construct(String $signKey, String $imgPath, String $cachePath, String $streamUrl)
   {
       $this->signKey = $signKey;
       $this->cachePath = $cachePath;
