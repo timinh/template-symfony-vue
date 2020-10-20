@@ -16,7 +16,7 @@ class MailController extends AbstractController
     public function sendMail(Request $request, MessageBusInterface $bus)
     {
         $content = json_decode($request->getContent(), true);
-        $bus->dispatch(new MailMessage('topeti@topeto.com', 'Essai de message', $content));
+        $bus->dispatch(new MailMessage('topeti@topeto.com', null, 'Essai de message', $content));
         return $this->json('Votre message a été mis dans la file d\'envoi...');
     }
 }

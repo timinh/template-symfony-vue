@@ -23,7 +23,7 @@ class MailService
   {
     $this->mailer->send(
       (new TemplatedEmail())
-          ->from($this->from)
+          ->from( $message->getFrom() ? $message->getFrom() : $this->from )
           ->to($message->getTo())
           ->subject( $this->getSubject( $message->getType() ) )
           ->htmlTemplate( $this->getHtmlTemplate( $message->getType() ) )
