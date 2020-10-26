@@ -26,7 +26,7 @@ class ImageController extends AbstractController
     }
 
     /**
-     * @Route("/images/stream/{width}/{height}/{path}", methods={"GET"})
+     * @Route("/images/stream/{path}", methods={"GET"})
      */
     public function imageStream(string $path)
     {
