@@ -1,15 +1,18 @@
 <template>
-<navbar :nav="items"/>
+  <navbar :nav="items"/>
   <main class="container mt-4">
+    <notifications-list />
     <slot />
   </main>
 </template>
 <script>
 import Navbar from '../components/Navbar'
+import NotificationsList from '../components/notifications/NotificationsList'
 export default {
   name: 'MainLayout',
   components: {
-    Navbar
+    Navbar,
+    NotificationsList
   },
   setup() {
     return {
