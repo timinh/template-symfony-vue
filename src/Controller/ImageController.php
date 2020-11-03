@@ -20,8 +20,9 @@ class ImageController extends AbstractController
     /**
      * @Route("/images/{width}/{height}/{path}", methods={"GET"})
      */
-    public function image(int $width, int $height, string $path)
+    public function image(string $path)
     {
+        $width = $height = 340;
         return $this->imageService->getResizedImage(intval($width), intval($height), 'fit', $path);
     }
 

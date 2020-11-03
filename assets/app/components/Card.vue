@@ -2,7 +2,7 @@
   <div class="card" style="width: 18rem;">
     <!-- <img :src="character.image" class="card-img-top" alt="" /> -->
     <!-- avec mise en case du stream sur le disque -->
-    <img :src="base_url+'/images/stream/'+character.id+'.jpeg'" class="card-img-top" alt="" />
+    <image-item :source="base_url+'/images/stream/'+character.id+'.jpeg'" classes="card-img-top" :alt="character.name" />
     <div class="card-body">
       <h5 class="card-title">{{character.name}}</h5>
       <p class="card-text">Espèce : {{character.species}}</p>
@@ -13,6 +13,7 @@
   </div>
 </template>
 <script>
+import ImageItem from './ImageItem'
 export default {
   name: 'Card',
   props: {
@@ -25,6 +26,9 @@ export default {
       require: false,
       default: true
     }
+  },
+  components: {
+    ImageItem
   },
   setup(props,{emit}){
     const clickButton = () => {

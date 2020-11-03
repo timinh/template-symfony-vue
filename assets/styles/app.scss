@@ -22,3 +22,21 @@
 .fade-leave-active {
   opacity: 0
 }
+
+.loader {
+  width: 240px;
+  height: 240px;
+  margin: auto;
+  border-top: 2px solid;
+  border-color: $primary;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
