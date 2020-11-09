@@ -1,4 +1,6 @@
-.PHONY: help install-php install-js install consume
+APP_ENV := $$(grep APP_ENV= .env.local | cut -d '=' -f2-)
+
+.PHONY: help install-php install-js install consume clear
 
 help: ## Affiche cette aide
 	@clear
@@ -15,3 +17,7 @@ install: install-php install-js ## Lance les commandes 'install-php' puis 'insta
 
 consume: ## Démarre les services messenger
 	php bin/console messenger:consume async
+
+## -- Maintenance --
+clear: ## Vide le cache
+	@php bin/console cache:clear --env=$(APP_ENV)
