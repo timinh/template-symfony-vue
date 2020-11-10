@@ -28,7 +28,7 @@ export default {
 
     const updateListe = () => {
       let ids = getRandomIntArray(getRandomIntBetween(4, 16), 200)
-      axios.get( 'https://rickandmortyapi.com/api/character/' + ids.join() )
+      axios.get( process.env.api_endpoint + '/character/' + ids.join() )
       .then(chars => {
         characters.value = chars.data
       })
