@@ -9,6 +9,7 @@ use Symfony\Component\Mailer\MailerInterface;
 class MailService
 {
   public const TYPE_CHARACTER = 1;
+  public const TYPE_CHARACTER_LIGHT = 2;
 
   private $mailer;
   private $from;
@@ -36,6 +37,9 @@ class MailService
   private function getSubject(int $type)
   {
     switch($type) {
+      case MailService::TYPE_CHARACTER_LIGHT:
+        return 'Fiche personnage light';
+        break;
       default:
         return 'Fiche personnage';
         break;
@@ -45,6 +49,9 @@ class MailService
   private function getHtmlTemplate(int $type)
   {
     switch($type) {
+      case MailService::TYPE_CHARACTER_LIGHT:
+        return 'emails/character_light.html.twig';
+        break;
       default:
         return 'emails/character.html.twig';
         break;

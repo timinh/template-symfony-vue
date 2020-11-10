@@ -80,6 +80,7 @@ Encore
             throw env.error;
         }
         options['process.env'].api_endpoint = JSON.stringify(env.parsed.API_ENDPOINT)
+        options['process.env'].graphql_endpoint = JSON.stringify(env.parsed.GRAPHQL_ENDPOINT)
         options['process.env'].base_url = JSON.stringify(env.parsed.BASE_URL)
     })
 ;

@@ -22,6 +22,10 @@ export default {
           link: '/private'
         },
         {
+          label: 'Exemple GraphQL',
+          link: '/private/graphql'
+        },
+        {
           label: 'Persos envoyés par mail',
           link: '/private/about'
         }
