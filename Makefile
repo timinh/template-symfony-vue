@@ -11,7 +11,7 @@ install-php: ## Installation des dépendances via composer
 	@composer install
 
 install-js: ## Installation des dépendances js (utile seulement en prod)
-	@yarn && yarn build
+	@npm install && npm run build
 
 install: install-php install-js ## Lance les commandes 'install-php' puis 'install-js'
 
