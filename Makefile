@@ -16,7 +16,7 @@ install-js: ## Installation des dépendances js (utile seulement en prod)
 install: install-php install-js ## Lance les commandes 'install-php' puis 'install-js'
 
 consume: ## Démarre les services messenger
-	php bin/console messenger:consume async
+	@php bin/console messenger:consume async
 
 ## -- Maintenance --
 clear: ## Vide le cache

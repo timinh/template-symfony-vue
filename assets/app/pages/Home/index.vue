@@ -1,7 +1,7 @@
 <template>
   <section class="container">
   <h1>Home</h1>
-  <h3>Quelques personnages aléatoires ({{savedCharacters.length}} enregistrés)</h3>
+  <h3>Quelques personnages aléatoires récupérés via api rest ({{savedCharacters.length}} enregistrés)</h3>
   <p>(fichier dans le dossier 'assets/app/pages/Home')</p>
     <div class="row">
     <card class="col-xs-12 col-sm-6 col-md-4 p-1" :character="character" v-for="(character, index) in characters" :showButton="isActive(character)" :key="index" @buttonClicked="sendCharacterByMail"/>
