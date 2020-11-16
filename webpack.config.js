@@ -74,7 +74,7 @@ Encore
     //.enableReactPreset()
     //.addEntry('admin', './assets/admin.js')
     .configureDefinePlugin(options => {
-        configFile = '.env';
+        configFile = '.env.local';
         const env = dotenv.config({path: configFile});
         if(env.error) {
             throw env.error;
