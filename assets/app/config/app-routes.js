@@ -12,7 +12,10 @@ const appRoutes = [
   {
     path: "/private/about",
     name: "about",
-    component: require('../pages/About/index.vue').default
+    component: require('../pages/About/index.vue').default,
+    meta: {
+      layout: 'OtherLayout'
+    }
   }
 ]
 export default appRoutes
