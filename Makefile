@@ -1,6 +1,6 @@
 APP_ENV := $$(grep APP_ENV= .env.local | cut -d '=' -f2-)
 
-.PHONY: help install-php install-js install consume clear
+.PHONY: help install-php install-js install consume clear debug
 
 help: ## Affiche cette aide
 	@clear
@@ -21,3 +21,10 @@ consume: ## Démarre les services messenger
 ## -- Maintenance --
 clear: ## Vide le cache
 	@php bin/console cache:clear --env=$(APP_ENV)
+
+debug: ## Affiche les logs d'erreur (term=XXX pour chercher un terme dans les logs)
+ifdef term
+	tail -f var/log/$(APP_ENV).log | grep -a --color=auto $(term)
+else
+	tail -f var/log/$(APP_ENV).log
+endif
